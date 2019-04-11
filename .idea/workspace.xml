@@ -81,13 +81,8 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Analysis/requirements">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/weibo_EA/.gitattributes">
+        <entry file="file://$PROJECT_DIR$/Analysis/requirements">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -121,7 +116,7 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/weibo_EA" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -231,15 +226,16 @@
       <workItem from="1554813386187" duration="283000" />
       <workItem from="1554871325847" duration="343000" />
       <workItem from="1554871778797" duration="9957000" />
-      <workItem from="1554959995680" duration="4808000" />
+      <workItem from="1554959995680" duration="4970000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16173000" />
+    <option name="totallyTimeSpent" value="16335000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20243205" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -255,7 +251,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.5092937" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.35687733" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -407,10 +403,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Analysis/requirements">
+    <entry file="file://$PROJECT_DIR$/weibo_EA/.gitattributes">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/weibo_EA/.gitattributes">
+    <entry file="file://$PROJECT_DIR$/Analysis/requirements">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
