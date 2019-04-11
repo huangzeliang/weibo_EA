@@ -87,4 +87,5 @@ def get_hot_word():
 
 
 if __name__ =='__main__':
-    print (get_hot_word())
+    print (type(get_hot_word()))
+    print (type(get_summary()))

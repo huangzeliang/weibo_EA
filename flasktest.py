@@ -69,7 +69,7 @@ def hotwords(name='sdfs'):
     print ("==================hotwords======================")
     a=get_hot_word()
     # print(a)
-    return json.dumps(a)
+    return json.dumps([x for x in a.keys() ])
 
 
 if __name__ == '__main__':
