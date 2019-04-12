@@ -1,8 +1,8 @@
 from flask import Flask, render_template, url_for, request, json,jsonify
-from Analysis.Analysis import TR4,get_keyword,get_all_text,get_emotion,get_summary,get_hot_word
+from Analysis.Analysis import TR4,get_keywords,get_all_text,get_emotion,get_summary,get_hot_word
 app = Flask(__name__)
 import sys
-sys.path.append("./venv/lib/python3.7/site-packages/")
+sys.path.append("/Users/zel/PycharmProjects/weibo_EA/venv/lib/python3.7/site-packages")
 
 a=""
 
@@ -10,39 +10,54 @@ a=""
 def hello_world():
     return render_template('test.html')
 
+@app.route('/testget',methods=['get'])
+def testget(name='sdfs'):
+    get = request.args['name']
+    return render_template('test.html', name=get)
+
+
 @app.route('/test',methods=['get'])
-def test():
-    print("===============test=================")
-    Scientific={"xAxis": {"type":"category","data":["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]},
-          "yAxis": {"type":"value"},"series": [{"data": [800, 932, 901, 90, 1290, 1330, 1390],
-                                                "type": "line"}],
-          "test":[{"name":"ad","value":"1212"},
-                  {"name":"adsds","value":"1212"},
-                  {"name":"adsdsd","value":"1212"}]}
-    return render_template('test.html', name = Scientific)
+def test(name='sdfs'):
+    get = request.args['name']
+    return render_template('a.html', name=get)
+
+
+
+# @app.route('/test',methods=['get'])
+# def test():
+#     print("===============test=================")
+#     Scientific={"xAxis": {"type":"category","data":["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]},
+#           "yAxis": {"type":"value"},"series": [{"data": [800, 932, 901, 90, 1290, 1330, 1390],
+#                                                 "type": "line"}],
+#           "test":[{"name":"ad","value":"1212"},
+#                   {"name":"adsds","value":"1212"},
+#                   {"name":"adsdsd","value":"1212"}]}
+#     return render_template('test.html', name = Scientific)
 
 
 @app.route('/keywords', methods=['post'])
-def keywords(name='sdfs'):
+def keywords(name=''):
     # a=request.get_data()
     # return json.dumps({"test":[{"name":"ad","value":"1212"}]})
     print ("==================keywords_wordcloud===================")
-    # print (get_keyword())
-    return json.dumps(get_keyword())
+    title = request.form['name']
+    return json.dumps(get_keywords(title))
 
 
 @app.route('/alltext', methods=['post'])
 def all_text(name='sdfs'):
     # a=request.get_data()
     print ("=================alltext=============================")
-    return json.dumps(get_all_text())
+    title = request.form['name']
+    return json.dumps(get_all_text(title))
 
 
 @app.route('/emotion', methods=['post'])
 def emotion(name='sdfs'):
     print ('===================get_emotion=======================')
+    title = request.form['name']
 
-    a=get_emotion()
+    a=get_emotion(title)
     print('===================show_emotion_png=======================')
     return json.dumps(a)
 
@@ -60,16 +75,17 @@ def emotion(name='sdfs'):
 @app.route('/summary', methods=['post'])
 def summary(name='sdfs'):
     print ("==================summary======================")
-    a=get_summary()
-    print(a)
+    title = request.form['name']
+    a=get_summary(title)
+
     return json.dumps(a)
 
 @app.route('/hotwords', methods=['post'])
 def hotwords(name='sdfs'):
     print ("==================hotwords======================")
-    a=get_hot_word()
-    # print(a)
-    return json.dumps([x for x in a.keys() ])
+    title = request.form['name']
+    hotwords=get_hot_word(title)
+    return json.dumps(hotwords)
 
 
 if __name__ == '__main__':

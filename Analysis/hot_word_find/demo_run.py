@@ -30,7 +30,7 @@ else:
     save_model(root, root_name)
 
 
-def get_hot_words():
+def get_hot_words(text=''):
 
     # 加载新的文章
     filename = basedir+'/data/demo.txt'
