@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bootstrap 实例 </title>
+  <title>分析结果 </title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,11 +30,11 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-12 col-md-10">
-				<div class="easy-autocomplete eac-square" style="width: 100%;"><input value="" placeholder="Let's start...which country were you born in?" class="form-control square-select margin-top-2 form-error" id="country-select" autocomplete="off"><div class="easy-autocomplete-container" id="eac-container-country-select"><ul style="display: none;"></ul></div></div>
+				<div class="easy-autocomplete eac-square" style="width: 100%;"><input value="" id ="search" placeholder="出入要查询的关键词" class="form-control square-select margin-top-2 form-error" id="country-select" autocomplete="off"><div class="easy-autocomplete-container" id="eac-container-country-select"><ul style="display: none;"></ul></div></div>
 				<div class="text-white" id="country-msg"><h5 class="text-white">Please select a country and then click next</h5></div>
 			</div>
 			<div class="col-xs-12 col-md-2">
-				<button id="next-button" onclick="doRedirect('explore');" class="btn btn-default" type="button">Next <i class="fa fa-arrow-circle-right"></i></button>
+				<button id="next-button" onclick="getinfomation();" class="btn btn-default" type="button">Next <i class="fa fa-arrow-circle-right"></i></button>
 			</div>
 		</div>
 
@@ -99,7 +99,7 @@
 			</div>
 			<div class="row clearfix">
 				<div class="col-md-12 column">
-					f
+
 				</div>
 			</div>
 		</div>
@@ -111,38 +111,22 @@
 <script></script>
 <script>
 	function test(){
-		alert()
+		alert('ass')
 	}
-
-function 	push_all_text(all_text){
-
-		// alert("sdsd")
-		document.getElementById("all_text").innerText=all_text
-
-}
-
-
-function 	push_hot_words(hot_words){
-
-		// alert("sdsd")
-		document.getElementById("hot_words").innerText=hot_words
-
-}
+function 	push_all_text(all_text){document.getElementById("all_text").innerText=all_text}
+function 	push_hot_words(hot_words){document.getElementById("hot_words").innerText=hot_words}
 
 function push_word(result){
-
     var myChart = echarts.init(document.getElementById("wordsCloud"));
         var option = {
-  //  title: {
-      //  text: '热点分析',
-        //link: 'https://www.baidu.com/s?wd=' + encodeURIComponent('ECharts'),
-       // x: 'center',
-       // textStyle: {
-        //    fontSize: 23
-        //}
-
-   // },
-
+   title: {
+       text: '热点分析',
+        link: 'https://www.baidu.com/s?wd=' + encodeURIComponent('ECharts'),
+       x: 'center',
+       textStyle: {
+           fontSize: 23
+        }
+   },
     tooltip: {
         show: true
     },
@@ -194,11 +178,10 @@ function push_word(result){
         }]
     }]
 };
-
+// 数据赋值
 var JosnList = result;
 
 option.series[0].data = JosnList;
-
 
  myChart.setOption(option);
  myChart.on('click', function (params) {
@@ -211,35 +194,50 @@ option.series[0].data = JosnList;
 </script>
 
 
-<script type="text/javascript">
-
-
-							test_name="$name";
-
-							jQuery.ajax({
-									url:'/keywords',
-									type:'post',
-									async:true,
-                                    data:{name:"a",type:"a",id:"a"},
-									dataType:'json',
-									success:function(result) {
-									    var info_news=result;
-									    push_word(info_news);
-									},
-									error:function (result) {
-										console.log('异常');
-                                    }
-                                })
-
-                            </script>
 
 
 <script type="text/javascript">
+	function keywords(name) {
+		var $name;
+		if(name=='')
+		{
+			$name='{{name}}';
+		}else
+		{
+			$name=name;
+		}
+		test_name = $name;
+		jQuery.ajax({
+			url: '/keywords',
+			type: 'post',
+			async: true,
+			data: {name: $name},
+			dataType: 'json',
+			success: function (result) {
+				var info_news = result;
+				push_word(info_news);
+			},
+			error: function (result) {
+				console.log('异常');
+			}
+		})
+	}
+</script>
+<script type="text/javascript">
+	function alltext(name) {
+		var $name;
+		if(name=='')
+		{
+			$name='{{name}}';
+		}else
+		{
+			$name=name;
+		}
 	jQuery.ajax({
 									url:'/alltext',
 									type:'post',
 									async:true,
-                                    data:{name:"a",type:"a",id:"a"},
+                                    data:{name:$name},
 									dataType:'json',
 									success:function(result) {
 									    var all_text=result;
@@ -249,16 +247,23 @@ option.series[0].data = JosnList;
 										console.log('异常');
                                     }
                                 })
-
+	}
 </script>
-
-
 <script type="text/javascript">
+	function hotwords(name) {
+		var $name;
+		if(name=='')
+		{
+			$name='{{name}}';
+		}else
+		{
+			$name=name;
+		}
 	jQuery.ajax({
 									url:'/hotwords',
 									type:'post',
 									async:true,
-                                    data:{name:"a",type:"a",id:"a"},
+                                    data:{name:$name},
 									dataType:'json',
 									success:function(result) {
 									    var hot_words=result;
@@ -267,17 +272,24 @@ option.series[0].data = JosnList;
 									error:function (result) {
 										console.log('异常');
                                     }
-                                })
-
+                                })}
 </script>
 
-
 <script type="text/javascript">
+	function emotion(name) {
+		var $name;
+		if(name=='')
+		{
+			$name='{{name}}';
+		}else
+		{
+			$name=name;
+		}
 	jQuery.ajax({
 									url:'/emotion',
 									type:'post',
 									async:true,
-                                    data:{name:"a",type:"a",id:"a"},
+                                    data:{name:$name},
 									dataType:'json',
 									success:function(result) {
 									    var img=result;
@@ -289,16 +301,26 @@ option.series[0].data = JosnList;
 										console.log('异常');
                                     }
                                 })
-
+	}
 </script>
 
-
 <script type="text/javascript">
+	function summary(name) {
+		var $name;
+		if(name=='')
+		{
+
+			$name='{{name}}';
+			// alert($name);
+		}else
+		{
+			$name=name;
+		}
 	jQuery.ajax({
 									url:'/summary',
 									type:'post',
 									async:true,
-                                    data:{name:"a",type:"a",id:"a"},
+                                    data:{name:$name},
 									dataType:'json',
 									success:function(result) {
 									    var summary=result;
@@ -309,9 +331,30 @@ option.series[0].data = JosnList;
 										console.log('异常');
                                     }
                                 })
+	}
+</script>
+
+<script>
+	keywords('');
+	alltext('');
+    summary('');
+    emotion('');
+    hotwords('');
 
 </script>
 
-w
+<script>
+	function getinfomation() {
+		var $name;
+		$name=document.getElementById("search").value;
+
+		keywords($name);
+		alltext($name);
+    	summary($name);
+    	emotion($name);
+    	hotwords($name);}
+</script>
+
+
 
 <html>

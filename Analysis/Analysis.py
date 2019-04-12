@@ -4,7 +4,7 @@ from Analysis.LiDanEmotionParser import emotionParser
 import sqlite3
 import sys
 from Analysis.hot_word_find.demo_run import get_hot_words
-
+from Analysis.get_data import *
 summary_lenth=3000
 sumary_number=3
 
@@ -31,26 +31,35 @@ class TR4:
 
 
 
-def get_keyword():
+def get_keywords(title='',param=[]):
 
-    with open('./Analysis/a.txt', 'r') as f:
-        text = f.read()
-        # print (text)
-        f.close()
+    if(title==''):
+        result=[{'name':'无', 'value': 10000},]
+    # with open('./Analysis/a.txt', 'r') as f:
+    #     text = f.read()
+    #     # print (text)
+    #     f.close()
+    else:
+        coments_list=get_comments(title)
+        text=''.join(coments_list)
+        result =  TR4().tr_word(text)
+
+    return result
+
+def get_all_text(title='',param=[]):
+    if (title == ''):
+        result = "无查询条件，无法获取关键词"
+        # with open('./Analysis/a.txt', 'r') as f:
+        #     text = f.read()
+        #     # print (text)
+        #     f.close()
+    else:
+        result=get_comments(title)
+    return result
 
 
-    s =  TR4().tr_word(text)
-    return s
 
-def get_all_text():
-    with open('./Analysis/a.txt', 'r') as f:
-        text = f.read()
-        f.close()
-    return text
-
-
-
-def sql_to_text():
+def sql_to_text(title='',param=[]):
     conn = conn = sqlite3.connect("deal_data.db")
     conn.text_factory = str
     cursor = conn.cursor()
@@ -68,23 +77,32 @@ def sql_to_text():
     conn.close()
     f.close()
 
-def get_emotion():
+def get_emotion(title='',param=[]):
+
     return emotionParser('薛教授')
 
 
 
-def get_summary():
-    with open('./Analysis/a.txt', 'r') as f:
-        text = f.read()
-        f.close()
+def get_summary(title='',param=[]):
+    if(title==''):
+        result="无查询条件，无法获取关键词"
 
-    return SnowNLP(text[0:3000]).summary(3)
+    else:
+        coments_list = get_comments(title)
+        text = ''.join(coments_list)
+        result=SnowNLP(text[0:3000]).summary(3)
+    return result
 
-def get_hot_word():
-    hot_words=get_hot_words()
-    return hot_words
+def get_hot_word(title='',param=[]):
+    if(title==''):
+        result="无查询条件，无法获取关键词"
+    else:
+        text=get_comments(title)
+        result=[x for x in get_hot_words(text).keys()]
+    return result
 
 
 
 if __name__ =='__main__':
-    print (get_hot_word())
+    print (type(get_hot_word()))
+    print (type(get_summary()))
