@@ -1,342 +1,376 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>分析结果 </title>
+    <title>分析结果 </title>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="static/css/bootstrap.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/css/bootstrap.css">
 
-  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-  <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="static/js/bootstrap.js"></script>
-	<script type="text/javascript"  src="static/js/echarts.min.js"></script>
-	  <script type="text/javascript" src="static/js/word-cloud.js"></script>
-<script type="text/javascript" src="static/js/tu.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="static/js/echarts.min.js"></script>
+    <script type="text/javascript" src="static/js/word-cloud.js"></script>
+    <script type="text/javascript" src="static/js/tu.js"></script>
 </head>
 
 
-
-
-
 <div class="container">
-	<div class="row clearfix">
-		<div class="col-md-12 column">
-			<div class="col-md-2 column">
-			</div>
-		</div>
-		<div class="row">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="col-md-2 column">
+            </div>
+        </div>
+        <div class="row">
 
-		</div>
-		<div class="row">
-			<div class="col-xs-12 col-md-10">
-				<div class="easy-autocomplete eac-square" style="width: 100%;"><input value="" id ="search" placeholder="出入要查询的关键词" class="form-control square-select margin-top-2 form-error" id="country-select" autocomplete="off"><div class="easy-autocomplete-container" id="eac-container-country-select"><ul style="display: none;"></ul></div></div>
-				<div class="text-white" id="country-msg"><h5 class="text-white">Please select a country and then click next</h5></div>
-			</div>
-			<div class="col-xs-12 col-md-2">
-				<button id="next-button" onclick="getinfomation();" class="btn btn-default" type="button">Next <i class="fa fa-arrow-circle-right"></i></button>
-			</div>
-		</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-10">
+                <div class="easy-autocomplete eac-square" style="width: 100%;"><input value="" id="search"
+                                                                                      placeholder="出入要查询的关键词"
+                                                                                      class="form-control square-select margin-top-2 form-error"
+                                                                                      id="country-select"
+                                                                                      autocomplete="off">
+                    <div class="easy-autocomplete-container" id="eac-container-country-select">
+                        <ul style="display: none;"></ul>
+                    </div>
+                </div>
+                <div class="text-white" id="country-msg"><h5 class="text-white">Please select a country and then click
+                    next</h5></div>
+            </div>
+            <div class="col-xs-12 col-md-2">
+                <button id="next-button" onclick="getinfomation();" class="btn btn-default" type="button">Next <i
+                        class="fa fa-arrow-circle-right"></i></button>
+            </div>
+        </div>
 
 
-	</div>
-	<div class="row clearfix">
-		<div class="col-md-12 column">
-			<h3>
-				情感分析系统
-			</h3>
-		</div>
-	</div>
-	<div class="row clearfix">
-		<div class="col-md-2 column">
-			<h2>
-				原推文
-			</h2><textarea   cols="20"   rows="30"   style="OVERFLOW:   hidden" id="all_text">
-			<p >
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <h3>
+                情感分析系统
+            </h3>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-2 column">
+            <h2>
+                原推文
+            </h2><textarea cols="20" rows="30" style="OVERFLOW:   hidden" id="all_text">
+			<p>
 				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
 			</p></textarea>
-			<p>
-				 <a class="btn" href="#">View details »</a>
-			</p>
-		</div>
-		<div class="col-md-5 column">
-			<div class="row clearfix">
-				<div class="col-md-12 column">
+            <p>
+                <a class="btn" href="#">View details »</a>
+            </p>
+        </div>
+        <div class="col-md-5 column">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
 
 
-					<div class="content_div content_size1">
-						<h3>热点关键词</h3>
-						<div id = "wordsCloud" style="height: 250px;width: 430px;"></div>
-					</div>
+                    <div class="content_div content_size1">
+                        <h3>热点关键词</h3>
+                        <div id="wordsCloud" style="height: 250px;width: 430px;"></div>
+                    </div>
 
-				</div>
-			</div>
-			<div class="row clearfix">
-				<div class="col-md-12 column">
-					<h3>评论分析得分</h3>
-					<img id="checkImg" src="" style="width:100%; height:auto;">
-				</div>
-			</div>
-			<div class="row clearfix">
-				<div class="col-md-12 column">
-					<!--<h3>主题语句</h3>-->
-						<!--<p id = "summary"></p>-->
-				</div>
-			</div>
-		</div>
-		<div class="col-md-5 column">
-			<div class="row clearfix">
-				<div class="col-md-12 column">
-					<h3>主题语句</h3>
-						<p id = "summary"></p>
-				</div>
-			</div>
-			<div class="row clearfix">
-				<div class="col-md-12 column">
-					<h3>热(名)词</h3>
-						<p id = "hot_words"></p>
-				</div>
-			</div>
-			<div class="row clearfix">
-				<div class="col-md-12 column">
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <h3>评论分析得分</h3>
+                    <img id="checkImg" src="" style="width:100%; height:auto;">
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <!--<h3>主题语句</h3>-->
+                    <!--<p id = "summary"></p>-->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 column">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <h3>主题语句</h3>
+                    <p id="summary"></p>
+                    <table class="table table-hover" id="table_summary">
+                        <tr>
+                            <th>标题</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
 
-				</div>
-			</div>
-		</div>
-	</div>
+                    </table>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <h3>热(名)词</h3>
+                    <p id="hot_words"></p>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
 <script type="text/javascript" src="static/js/tu.js"></script>
 <script></script>
 <script>
-	function test(){
-		alert('ass')
-	}
-function 	push_all_text(all_text){document.getElementById("all_text").innerText=all_text}
-function 	push_hot_words(hot_words){document.getElementById("hot_words").innerText=hot_words}
+    function test() {
+        alert('ass')
+    }
 
-function push_word(result){
-    var myChart = echarts.init(document.getElementById("wordsCloud"));
+    function push_all_text(all_text) {
+        document.getElementById("all_text").innerText = all_text
+    }
+
+    function push_hot_words(hot_words) {
+        document.getElementById("hot_words").innerText = hot_words
+    }
+
+    function push_summary(summary) {
+        for(x in summary)
+        {
+        var newRow = "<tr><td>"+summary[x]+"</td></tr>";
+        $("#table_summary tr:last").after(newRow);
+        }
+
+        var newRow = "<tr><td><p><p><p></p></td></tr>";
+
+        $("#table_summary tr:last").after(newRow);
+        // $("#summary").text(summary);
+
+    }
+
+    function push_word(result) {
+        var myChart = echarts.init(document.getElementById("wordsCloud"));
         var option = {
-   title: {
-       text: '热点分析',
-        link: 'https://www.baidu.com/s?wd=' + encodeURIComponent('ECharts'),
-       x: 'center',
-       textStyle: {
-           fontSize: 23
-        }
-   },
-    tooltip: {
-        show: true
-    },
-    toolbox: {
-        feature: {
-            saveAsImage: {
-                iconStyle: {
-                    normal: {
-                        color: '#FFFFFF'
-                    }
-                }
-            }
-        }
-    },
-    series: [{
-        name: '热点分析',
-        type: 'wordCloud',
-        //size: ['9%', '99%'],
-        sizeRange: [6, 66],
-        //textRotation: [0, 45, 90, -45],
-        rotationRange: [-45, 90],
-        //shape: 'circle',
-        textPadding: 0,
-        autoSize: {
-            enable: true,
-            minSize: 6
-        },
-        textStyle: {
-            normal: {
-                color: function() {
-                    return 'rgb(' + [
-                        Math.round(Math.random() * 160),
-                        Math.round(Math.random() * 160),
-                        Math.round(Math.random() * 160)
-                    ].join(',') + ')';
+            title: {
+                text: '热点分析',
+                link: 'https://www.baidu.com/s?wd=' + encodeURIComponent('ECharts'),
+                x: 'center',
+                textStyle: {
+                    fontSize: 23
                 }
             },
-            emphasis: {
-                shadowBlur: 10,
-                shadowColor: '#333'
-            }
-        },
-        data: [{
-            name: "Jayfee",
-            value: 666
-        }, {
-            name: "Nancy",
-            value: 520
-        }]
-    }]
-};
+            tooltip: {
+                show: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {
+                        iconStyle: {
+                            normal: {
+                                color: '#FFFFFF'
+                            }
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: '热点分析',
+                type: 'wordCloud',
+                //size: ['9%', '99%'],
+                sizeRange: [6, 66],
+                //textRotation: [0, 45, 90, -45],
+                rotationRange: [-45, 90],
+                //shape: 'circle',
+                textPadding: 0,
+                autoSize: {
+                    enable: true,
+                    minSize: 6
+                },
+                textStyle: {
+                    normal: {
+                        color: function () {
+                            return 'rgb(' + [
+                                Math.round(Math.random() * 160),
+                                Math.round(Math.random() * 160),
+                                Math.round(Math.random() * 160)
+                            ].join(',') + ')';
+                        }
+                    },
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowColor: '#333'
+                    }
+                },
+                data: [{
+                    name: "Jayfee",
+                    value: 666
+                }, {
+                    name: "Nancy",
+                    value: 520
+                }]
+            }]
+        };
 // 数据赋值
-var JosnList = result;
+        var JosnList = result;
 
-option.series[0].data = JosnList;
+        option.series[0].data = JosnList;
 
- myChart.setOption(option);
- myChart.on('click', function (params) {
-                //alert((params.name));
-                // window.open('https://www.baidu.com/s?wd=' + encodeURIComponent());                           .name));
-				window.open('https://www.baidu.com/s?wd='+encodeURIComponent(params));
-            });
-}
+        myChart.setOption(option);
+        myChart.on('click', function (params) {
+            //alert((params.name));
+            // window.open('https://www.baidu.com/s?wd=' + encodeURIComponent());                           .name));
+            window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params));
+        });
+    }
+
+
+    function add_summary() {
+    }
 
 </script>
 
 
-
-
 <script type="text/javascript">
-	function keywords(name) {
-		var $name;
-		if(name=='')
-		{
-			$name='{{name}}';
-		}else
-		{
-			$name=name;
-		}
-		test_name = $name;
-		jQuery.ajax({
-			url: '/keywords',
-			type: 'post',
-			async: true,
-			data: {name: $name},
-			dataType: 'json',
-			success: function (result) {
-				var info_news = result;
-				push_word(info_news);
-			},
-			error: function (result) {
-				console.log('异常');
-			}
-		})
-	}
+    function keywords(name) {
+        var $name;
+        if (name == '') {
+            $name = '{{name}}';
+        } else {
+            $name = name;
+        }
+        test_name = $name;
+        jQuery.ajax({
+            url: '/keywords',
+            type: 'post',
+            async: true,
+            data: {name: $name},
+            dataType: 'json',
+            success: function (result) {
+                var info_news = result;
+                push_word(info_news);
+            },
+            error: function (result) {
+                console.log('异常');
+            }
+        })
+    }
 </script>
 <script type="text/javascript">
-	function alltext(name) {
-		var $name;
-		if(name=='')
-		{
-			$name='{{name}}';
-		}else
-		{
-			$name=name;
-		}
-	jQuery.ajax({
-									url:'/alltext',
-									type:'post',
-									async:true,
-                                    data:{name:$name},
-									dataType:'json',
-									success:function(result) {
-									    var all_text=result;
-									    push_all_text(all_text);
-									},
-									error:function (result) {
-										console.log('异常');
-                                    }
-                                })
-	}
+    function alltext(name) {
+        var $name;
+        if (name == '') {
+            $name = '{{name}}';
+        } else {
+            $name = name;
+        }
+        jQuery.ajax({
+            url: '/alltext',
+            type: 'post',
+            async: true,
+            data: {name: $name},
+            dataType: 'json',
+            success: function (result) {
+
+
+                var all_text = result;
+                push_all_text(all_text);
+
+            },
+            error: function (result) {
+                console.log('异常');
+            }
+        })
+    }
 </script>
 <script type="text/javascript">
-	function hotwords(name) {
-		var $name;
-		if(name=='')
-		{
-			$name='{{name}}';
-		}else
-		{
-			$name=name;
-		}
-	jQuery.ajax({
-									url:'/hotwords',
-									type:'post',
-									async:true,
-                                    data:{name:$name},
-									dataType:'json',
-									success:function(result) {
-									    var hot_words=result;
-									    push_hot_words(hot_words);
-									},
-									error:function (result) {
-										console.log('异常');
-                                    }
-                                })}
+    function hotwords(name) {
+        var $name;
+        if (name == '') {
+            $name = '{{name}}';
+        } else {
+            $name = name;
+        }
+        jQuery.ajax({
+            url: '/hotwords',
+            type: 'post',
+            async: true,
+            data: {name: $name},
+            dataType: 'json',
+            success: function (result) {
+                var hot_words = result;
+
+
+                push_hot_words(hot_words);
+            },
+            error: function (result) {
+                console.log('异常');
+            }
+        })
+    }
 </script>
 
 <script type="text/javascript">
-	function emotion(name) {
-		var $name;
-		if(name=='')
-		{
-			$name='{{name}}';
-		}else
-		{
-			$name=name;
-		}
-	jQuery.ajax({
-									url:'/emotion',
-									type:'post',
-									async:true,
-                                    data:{name:$name},
-									dataType:'json',
-									success:function(result) {
-									    var img=result;
-									    // push_all_text(all_text);
-									    // alert(img);
-									    $("#checkImg").attr("src","data:image/png;base64,"+img);
-									},
-									error:function (result) {
-										console.log('异常');
-                                    }
-                                })
-	}
+    function emotion(name) {
+        var $name;
+        if (name == '') {
+            $name = '{{name}}';
+        } else {
+            $name = name;
+        }
+        jQuery.ajax({
+            url: '/emotion',
+            type: 'post',
+            async: true,
+            data: {name: $name},
+            dataType: 'json',
+            success: function (result) {
+                var img = result;
+                // push_all_text(all_text);
+                // alert(img);
+                $("#checkImg").attr("src", "data:image/png;base64," + img);
+            },
+            error: function (result) {
+                console.log('异常');
+            }
+        })
+    }
 </script>
 
 <script type="text/javascript">
-	function summary(name) {
-		var $name;
-		if(name=='')
-		{
+    function summary(name) {
+        var $name;
+        if (name == '') {
 
-			$name='{{name}}';
-			// alert($name);
-		}else
-		{
-			$name=name;
-		}
-	jQuery.ajax({
-									url:'/summary',
-									type:'post',
-									async:true,
-                                    data:{name:$name},
-									dataType:'json',
-									success:function(result) {
-									    var summary=result;
-									    // push_all_text(all_text);
-									    $("#summary").text(summary);
-									},
-									error:function (result) {
-										console.log('异常');
-                                    }
-                                })
-	}
+            $name = '{{name}}';
+            // alert($name);
+        } else {
+            $name = name;
+        }
+        jQuery.ajax({
+            url: '/summary',
+            type: 'post',
+            async: true,
+            data: {name: $name},
+            dataType: 'json',
+            success: function (result) {
+                // var summary = result;
+                // // push_all_text(all_text);
+                push_summary(result)
+            },
+            error: function (result) {
+                console.log('异常');
+            }
+        })
+    }
 </script>
 
 <script>
-	keywords('');
-	alltext('');
+    keywords('');
+    alltext('');
     summary('');
     emotion('');
     hotwords('');
@@ -344,17 +378,17 @@ option.series[0].data = JosnList;
 </script>
 
 <script>
-	function getinfomation() {
-		var $name;
-		$name=document.getElementById("search").value;
+    function getinfomation() {
+        var $name;
+        $name = document.getElementById("search").value;
 
-		keywords($name);
-		alltext($name);
-    	summary($name);
-    	emotion($name);
-    	hotwords($name);}
+        keywords($name);
+        alltext($name);
+        summary($name);
+        emotion($name);
+        hotwords($name);
+    }
 </script>
-
 
 
 <html>

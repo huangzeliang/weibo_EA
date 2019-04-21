@@ -1,0 +1,2 @@
+env_variables:
+    GAE_USE_SOCKETS_HTTPLIB : 'true'

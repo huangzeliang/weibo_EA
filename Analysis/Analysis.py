@@ -1,6 +1,6 @@
 from textrank4zh import TextRank4Keyword, TextRank4Sentence
 from snownlp import SnowNLP
-from Analysis.LiDanEmotionParser import emotionParser
+from Analysis.LiDanEmotionParser import emotionParser,emotionParser_from_str
 import sqlite3
 import sys
 from Analysis.hot_word_find.demo_run import get_hot_words
@@ -54,7 +54,7 @@ def get_all_text(title='',param=[]):
         #     # print (text)
         #     f.close()
     else:
-        result=get_comments(title)
+        result=get_article(title)
     return result
 
 
@@ -68,9 +68,9 @@ def sql_to_text(title='',param=[]):
     sentimentslist = []
     f = open('a.txt', 'a')
     for item in values:
-        print (item)
+        # print (item)
         f.write(item[0])
-        print (type(item))
+        # print (type(item))
         # print SnowNLP(item[0].decode("utf-8")).words
         #sentimentslist.append(SnowNLP(item[0].decode("utf-8")).sentiments)
     cursor.close()
@@ -79,7 +79,8 @@ def sql_to_text(title='',param=[]):
 
 def get_emotion(title='',param=[]):
 
-    return emotionParser('薛教授')
+    comments=get_comments(title)
+    return emotionParser_from_str(comments)
 
 
 
@@ -97,12 +98,19 @@ def get_hot_word(title='',param=[]):
     if(title==''):
         result="无查询条件，无法获取关键词"
     else:
-        text=get_comments(title)
+        text=get_article(title)
+        print (text)
         result=[x for x in get_hot_words(text).keys()]
     return result
+
+def get_news_list(start,end):
+
+    return get_news(start,end)
 
 
 
 if __name__ =='__main__':
     print (type(get_hot_word()))
     print (type(get_summary()))
+    print(type(get_keywords('九华山和沂蒙山被列为世界地质公园')))
+

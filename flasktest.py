@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, request, json,jsonify
-from Analysis.Analysis import TR4,get_keywords,get_all_text,get_emotion,get_summary,get_hot_word
+from Analysis.Analysis import TR4,get_keywords,get_all_text,get_emotion,get_summary,get_hot_word,get_news_list
 app = Flask(__name__)
 import sys
 sys.path.append("/Users/zel/PycharmProjects/weibo_EA/venv/lib/python3.7/site-packages")
@@ -7,8 +7,23 @@ sys.path.append("/Users/zel/PycharmProjects/weibo_EA/venv/lib/python3.7/site-pac
 a=""
 
 @app.route('/')
-def hello_world():
-    return render_template('test.html')
+def root():
+    return render_template('news_list.html')
+
+@app.route('/list',methods=['post'])
+def list():
+
+    page = int(request.form['page'])
+    number = int(request.form['number'])
+
+    result=get_news_list(page,number)
+    for x in result:
+        print (x)
+        x['article']=x['article'][0:50]
+        x['comments']=x['comments'][0:5]
+
+    # print (result)
+    return json.dumps(result)
 
 @app.route('/testget',methods=['get'])
 def testget(name='sdfs'):
@@ -70,7 +85,6 @@ def emotion(name='sdfs'):
 #     name=json.dumps(name)
 #
 #     return render_template('index.html', name=name, keyword=keyword)
-
 
 @app.route('/summary', methods=['post'])
 def summary(name='sdfs'):
