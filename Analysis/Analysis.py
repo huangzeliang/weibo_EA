@@ -99,14 +99,17 @@ def get_hot_word(title='',param=[]):
         result="无查询条件，无法获取关键词"
     else:
         text=get_article(title)
-        print (text)
+        # print (text)
         result=[x for x in get_hot_words(text).keys()]
     return result
 
-def get_news_list(start,end):
+def get_news_list(page,number,keyword):
+    # return get_news(start,end)
+    return get_news_by_keyword(page,number,keyword)
+def get_news_list_by_keyword(keyword=''):
 
-    return get_news(start,end)
-
+    result = get_news_by_keyword(keyword)
+    return result
 
 
 if __name__ =='__main__':

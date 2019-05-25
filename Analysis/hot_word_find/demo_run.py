@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-# @Time    : 2018/05/26 下午5:13
-# @Update  : 2018/09/28 上午10:30
-# @Author  : zhanzecheng/片刻
-# @File    : demo.py.py
+# @Time    : 2019/4/26 下午5:03
+# @Author  : huangzeliang
+# @File    : model.py
 # @Software: PyCharm
 """
 import os,sys
@@ -33,7 +32,7 @@ else:
 def get_hot_words(text=''):
 
     # 加载新的文章
-    filename = basedir+'/data/demo.txt'
+    # filename = basedir+'/data/demo.txt'
     data = load_data(text, stopwords)
     # 将新的文章插入到Root中
     load_data_2_root(data)
@@ -79,7 +78,8 @@ def load_data(text, stopwords):
 
 
 def load_data_2_root(data):
-    print('------> 插入节点')
+    print('------> 插入节点')#['你', '是', '一只', '狗', '吗']
+
     for word_list in data:
         # tmp 表示每一行自由组合后的结果（n gram）
         # tmp: [['它'], ['是'], ['小'], ['狗'], ['它', '是'], ['是', '小'], ['小', '狗'], ['它', '是', '小'], ['是', '小', '狗']]

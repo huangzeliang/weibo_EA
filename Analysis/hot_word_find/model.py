@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-# @Time    : 2018/5/26 下午5:03
-# @Author  : zhanzecheng
+# @Time    : 2019/4/26 下午5:03
+# @Author  : huangzeliang
 # @File    : model.py
 # @Software: PyCharm
 """
@@ -22,9 +22,8 @@ class Node(object):
         # 用来存放节点
         self.child = []
         # 方便计算 左右熵
-        # 判断是否是后缀（标识后缀用的，也就是记录 b->c->a 变换后的标记）
         self.isback = False
-
+        # 判断是否是后缀（标识后缀用的，也就是记录 b->c->a 变换后的标记）
 
 class TrieNode(object):
     """

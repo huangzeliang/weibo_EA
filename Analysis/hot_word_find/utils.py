@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
+
 """
-# @Time    : 2018/5/26 下午5:20
-# @Author  : zhanzecheng
-# @File    : utils.py
+# @Time    : 2019/4/26 下午5:03
+# @Author  : huangzeliang
+# @File    : model.py
 # @Software: PyCharm
 """
 import pickle
@@ -16,7 +17,7 @@ def get_stopwords():
 
 def generate_ngram(input_list, n):
     result = []
-    for i in range(1, n+1):
+    for i in range(1, n+1):#[1.2.3] [list]中的123个词的随机组合
         result.extend(zip(*[input_list[j:] for j in range(i)]))
     return result
 

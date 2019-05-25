@@ -19,6 +19,7 @@ class page_paser():
     url=''
     mid=''
     def __init__(self, url):
+        ''''''
         self.url=url
         if(re.search('http', url)==None):
             self.url='http:'+url

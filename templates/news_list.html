@@ -21,13 +21,10 @@
 
     <div class="row-fluid">
         <div class="span12">
-            <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" id="search" style="width:800px;display:inline;" class="form-control" placeholder="输入关键词">
+                        <button onclick="change_page(1)" class="btn btn-default">Submit</button>
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-
         </div>
     </div>
     <div class="row-fluid">
@@ -35,14 +32,22 @@
         </div>
         <div class="span10">
             <table class="table table-hover" id="table">
+
+
+<thead>
                 <tr>
-                    <th>标题</th>
+                    <th style="width:100px;">标题</th>
                     <th>内容</th>
                     <th>评论内容</th>
                     <th>评论条数</th>
-                    <th>更新时间</th>
+                    <th>新闻类别</th>
                     <th>操作</th>
                 </tr>
+</thead>
+                <tbody>
+
+                </tbody>
+
 
             </table>
         </div>
@@ -65,21 +70,46 @@
 
 <script>
     function add_list(news_list) {
+        //
+        var artTable = document.getElementById("table");
+        artTable.innerHTML="<thead>\n" +
+            "                <tr>\n" +
+            "                    <th style=\"width:200px;\">标题</th>\n" +
+            "                    <th  style=\"width:400px;\">内容</th>\n" +
+            "                    <th>评论内容</th>\n" +
+            "                    <th>评论条数</th>\n" +
+            "                    <th>新闻类别</th>\n" +
+            "                    <th>操作</th>\n" +
+            "                </tr>\n" +
+            "</thead>"
+        // artBody.parentNode.outerHTML = artBody.parentNode.outerHTML.replace(artBody.innerHTML, "");
         for (i in news_list) {
             var x = document.getElementById('table').insertRow(1)
             x.insertCell(0).innerHTML = news_list[i]['title']
             x.insertCell(1).innerHTML = news_list[i]['article']
-            x.insertCell(2).innerHTML = news_list[i]['comments']
-            x.insertCell(3).innerHTML = news_list[i]['comments']
+            comments_text=''
+            for (i in news_list[i]['comments']){
+                comments_text=comments_text+'<p>'+news_list[i]['comments'][i]
+            }
+
+            // x.insertCell(2).innerHTML = news_list[i]['comments']
+            x.insertCell(2).innerHTML=comments_text
+            x.insertCell(3).innerHTML = news_list[i]['counts']
+            x.insertCell(4).innerHTML = news_list[i]['category']
             var str = "<a href='http://127.0.0.1:5000/testget?name=" + news_list[i]['title'] + "'>查看详情</a>"
-            x.insertCell(4).innerHTML = str
+            x.insertCell(5).innerHTML = str
         }
+
+        // var artTable = document.getElementById("table");
+        // alert(artTable.row)
+        // artTable.innerHTML='';
+
         // alert(news_list[1]['url']);
     }
 </script>
 
 <script type="text/javascript">
-    function list(page) {
+    function list(page,keyword) {
         var $page;
         var $number = 10;
         if (page == '') {
@@ -87,12 +117,13 @@
         } else {
             $page = page;
         }
+        var  $keyword=keyword
 
         jQuery.ajax({
             url: '/list',
             type: 'post',
             async: true,
-            data: {page: $page, number: $number},
+            data: {page: $page, number: $number,keyword: $keyword},
             dataType: 'json',
             success: function (result) {
                 var info_news = result;
@@ -105,20 +136,18 @@
     }
 </script>
 <script>
+    //
     change_page(1)
-
     function change_page(page) {
-        list(page);
+        var $keyword=document.getElementById('search').value
 
+        list(page,$keyword);
         var x = document.getElementById('pagecheck');
         var str = '<ul class="pagination">';
-
         if (page > 1) {
             str = str + '<li><a onclick="change_page(' + (page - 1) + ')">&laquo;</a></li>'
         }
-
         for (i = 0; i < 5; i++) {
-
             {
                 if (i==0){str = str + '<li  class="active"><a onclick=" change_page(' + (i + page) + ')">' + (i + page) + '</a></li>'}
                 else{
@@ -127,10 +156,8 @@
         }
         str = str + '<li><a onclick=" change_page(' + (5 + page) + ')">&raquo;</a></li>\n' +
             '        </ul>'
-
         x.innerHTML = str;
-
-
     }
+
 </script>
 </html>

@@ -21,6 +21,13 @@ def get_article_list(title):
     article = [x['article'] for x in account.find({"title": title})]
     return article[0]
 
+def get_news_by_keyword(page=0,limit=10,keyword=""):
+    '''{"tname": {$regex: '测试', '''
+    news = [x for x in account.find({"title":{'$regex': keyword}},skip=page*limit, limit=limit)]
+    for i in news:
+        i.pop('_id')
+    return news
+
 
 def get_comments(title):
     '''获取comments 返回list'''
@@ -29,6 +36,7 @@ def get_comments(title):
     return comments
 
 def get_news(page=1,number=10):
+    '''返回list'''
     cursor_iter=account.find_raw_batches(skip=(page-1)*number,max_scan=page*number)
 
     for batch in cursor_iter:
@@ -36,4 +44,5 @@ def get_news(page=1,number=10):
     for i in result:
         i.pop('_id')
     return result
+
 

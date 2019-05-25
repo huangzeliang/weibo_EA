@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+# @Time    : 2019/4/26 下午5:03
+# @Author  : huangzeliang
+# @File    : model.py
+# @Software: PyCharm
+"""
+
+
 from flask import Flask, render_template, url_for, request, json,jsonify
 from Analysis.Analysis import TR4,get_keywords,get_all_text,get_emotion,get_summary,get_hot_word,get_news_list
 app = Flask(__name__)
@@ -11,16 +20,21 @@ def root():
     return render_template('news_list.html')
 
 @app.route('/list',methods=['post'])
-def list():
-
+def get_list():
+    '''获取新闻列表'''
     page = int(request.form['page'])
     number = int(request.form['number'])
-
-    result=get_news_list(page,number)
+    keyword=str(request.form['keyword'])
+    result=get_news_list(page,number,keyword)
     for x in result:
-        print (x)
+        # print (x)
         x['article']=x['article'][0:50]
         x['comments']=x['comments'][0:5]
+        if(isinstance(x['comments'],list)):
+            print ("isinstance")
+            for i in range(len(x['comments'])):
+                if(len(x['comments'][i])>20):
+                    x['comments'][i]=x['comments'][i][0:20]
 
     # print (result)
     return json.dumps(result)
@@ -28,7 +42,7 @@ def list():
 @app.route('/testget',methods=['get'])
 def testget(name='sdfs'):
     get = request.args['name']
-    return render_template('test.html', name=get)
+    return render_template('demo1.html', name=get)
 
 
 @app.route('/test',methods=['get'])

@@ -58,7 +58,8 @@
         <div class="col-md-2 column">
             <h2>
                 原推文
-            </h2><textarea cols="20" rows="30" style="OVERFLOW:   hidden" id="all_text">
+            </h2>
+            <textarea cols="20" rows="30"  style="overflow:scroll; overflow-x:hidden; height:1000px; width:1000px; " id="all_text">
 			<p>
 				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
 			</p></textarea>
@@ -126,14 +127,11 @@
 <script type="text/javascript" src="static/js/tu.js"></script>
 <script></script>
 <script>
-    function test() {
-        alert('ass')
-    }
 
     function push_all_text(all_text) {
         document.getElementById("all_text").innerText = all_text
     }
-
+    //热(名)词
     function push_hot_words(hot_words) {
         document.getElementById("hot_words").innerText = hot_words
     }
@@ -232,7 +230,6 @@
     }
 
 </script>
-
 
 <script type="text/javascript">
     function keywords(name) {
