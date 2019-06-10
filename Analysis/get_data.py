@@ -21,7 +21,7 @@ def get_article_list(title):
     article = [x['article'] for x in account.find({"title": title})]
     return article[0]
 
-def get_news_by_keyword(page=0,limit=10,keyword=""):
+def get_news_by_keyword(page=1,limit=10,keyword=""):
     '''{"tname": {$regex: '测试', '''
     news = [x for x in account.find({"title":{'$regex': keyword}},skip=page*limit, limit=limit)]
     for i in news:
@@ -46,3 +46,29 @@ def get_news(page=1,number=10):
     return result
 
 
+def category_count_from_mongo():
+
+    key = ['category']
+    # condition = {
+    #     'time': {
+    #         '$gte': start_time,
+    #         '$lte': end_time,
+    #     }
+    # }
+
+    func = '''
+            function(obj,prev)
+            {
+                prev.count++;
+            }'''
+
+    initial = {'count': 0}
+    # reducer = Code("""
+    #  function(obj, prev) {
+    #  prev.count = prev.count + obj.amount
+    #  }
+    # """)
+
+    ret = account.group(key,None, initial,func)
+    result={x['category']:x['count'] for x in ret   }
+    return result

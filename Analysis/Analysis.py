@@ -101,6 +101,8 @@ def get_hot_word(title='',param=[]):
         text=get_article(title)
         # print (text)
         result=[x for x in get_hot_words(text).keys()]
+        if len(result)>5:
+            result=result[0:5]
     return result
 
 def get_news_list(page,number,keyword):
@@ -111,6 +113,9 @@ def get_news_list_by_keyword(keyword=''):
     result = get_news_by_keyword(keyword)
     return result
 
+
+def get_category_count():
+    return category_count_from_mongo()
 
 if __name__ =='__main__':
     print (type(get_hot_word()))

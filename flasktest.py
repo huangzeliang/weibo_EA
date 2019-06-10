@@ -8,7 +8,7 @@
 
 
 from flask import Flask, render_template, url_for, request, json,jsonify
-from Analysis.Analysis import TR4,get_keywords,get_all_text,get_emotion,get_summary,get_hot_word,get_news_list
+from Analysis.Analysis import TR4,get_keywords,get_all_text,get_emotion,get_summary,get_hot_word,get_news_list,get_category_count
 app = Flask(__name__)
 import sys
 sys.path.append("/Users/zel/PycharmProjects/weibo_EA/venv/lib/python3.7/site-packages")
@@ -28,7 +28,8 @@ def get_list():
     result=get_news_list(page,number,keyword)
     for x in result:
         # print (x)
-        x['article']=x['article'][0:50]
+        if len(x['article'])>100:
+            x['article']=x['article'][0:100]
         x['comments']=x['comments'][0:5]
         if(isinstance(x['comments'],list)):
             print ("isinstance")
@@ -42,13 +43,36 @@ def get_list():
 @app.route('/testget',methods=['get'])
 def testget(name='sdfs'):
     get = request.args['name']
-    return render_template('demo1.html', name=get)
+    return render_template('demo2.html', name=get)
 
+
+@app.route('/a',methods=['get'])
+def a():
+
+    return render_template('a.html')
 
 @app.route('/test',methods=['get'])
-def test(name='sdfs'):
-    get = request.args['name']
-    return render_template('a.html', name=get)
+def test():
+    return render_template('index.html')
+
+@app.route('/demo2',methods=['get'])
+def demo2():
+    return render_template('demo2.html')
+
+@app.route('/categorycount',methods=['get'])
+def categorycount():
+    data=[]
+    # count={'体育': 0, '财经': 1, '房产': 2, '家居': 3, '教育': 4, '科技': 5, '时尚': 6, '时政': 7, '游戏': 8, '娱乐': 9}
+    count=get_category_count()
+
+
+    for name, value  in count.items():
+        data.append({'value':value,'name':name})
+    category=list(count.keys())
+
+    result={'data':data,'category':category}
+    return json.dumps(result)
+
 
 
 
@@ -85,10 +109,30 @@ def all_text(name='sdfs'):
 def emotion(name='sdfs'):
     print ('===================get_emotion=======================')
     title = request.form['name']
+    data=[]
+    basestr,scores=get_emotion(title)
 
-    a=get_emotion(title)
+
+    score_count = {'正向': 0, '中向': 0, '负向': 0}
+    for x in scores:
+        if x > 0.6:
+            score_count['正向'] = score_count['正向'] + 1
+        else:
+            if x < 0.4:
+                score_count['负向'] = score_count['负向'] + 1
+            else:
+                score_count['中向'] = score_count['中向'] + 1
+
+    print(score_count)
+    data = []
+    for name, value in score_count.items():
+        data.append({'value': value, 'name': name})
+    category=list(score_count.keys())
+
+    result={'data':data,'category':category}
     print('===================show_emotion_png=======================')
-    return json.dumps(a)
+    emotion = {'img': basestr, 'result': result}
+    return json.dumps(emotion)
 
 # @app.route('/s', methods=['get'])
 # def sosuo(name='sdfs'):
@@ -114,6 +158,9 @@ def hotwords(name='sdfs'):
     title = request.form['name']
     hotwords=get_hot_word(title)
     return json.dumps(hotwords)
+
+
+
 
 
 if __name__ == '__main__':

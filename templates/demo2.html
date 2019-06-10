@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://v4.bootcss.com/docs/4.0/examples/album/# -->
+<html lang="en" class="gr__v4_bootcss_com"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <!-- src CSS -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="static/js/echarts.min.js"></script>
+    <script type="text/javascript" src="static/js/word-cloud.js"></script>
+    <script type="text/javascript" src="static/js/tu.js"></script>
+
+
+
+    <link href="static/css/carousel.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://v4.bootcss.com/favicon.ico">
+
+    <title>Album example for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/js/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="static/js/album.css" rel="stylesheet">
+  <link id="noteanywherecss" media="screen" type="text/css" rel="stylesheet" href="data:text/css,.note-anywhere%20.closebutton%7Bbackground-image%3A%20url%28chrome-extension%3A//bohahkiiknkelflnjjlipnaeapefmjbh/asset/deleteButton.png%29%3B%7D%0A"></head>
+
+  <body data-gr-c-s-loaded="true">
+
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">About</h4>
+              <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+            </div>
+            <!--<div class="col-sm-4 offset-md-1 py-4">-->
+              <!--<h4 class="text-white">Contact</h4>-->
+              <!--<ul class="list-unstyled">-->
+                <!--<li><a href="https://v4.bootcss.com/docs/4.0/examples/album/#" class="text-white">Follow on Twitter</a></li>-->
+                <!--<li><a href="https://v4.bootcss.com/docs/4.0/examples/album/#" class="text-white">Like on Facebook</a></li>-->
+                <!--<li><a href="https://v4.bootcss.com/docs/4.0/examples/album/#" class="text-white">Email me</a></li>-->
+              <!--</ul>-->
+            <!--</div>-->
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="https://v4.bootcss.com/docs/4.0/examples/album/#" class="navbar-brand d-flex align-items-center">
+            <strong>新闻分析结果</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main role="main">
+
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+            <div class="container">
+              <div class="carousel-caption text-left">
+                <h1>新闻内容</h1>
+                <p  style="height: 300px;overflow:scroll;"   id="all_text">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <!--<p><a class="btn btn-lg btn-primary" href="https://v4.bootcss.com/docs/4.0/examples/carousel/#" role="button">Sign up today</a></p>-->
+              </div>
+            </div>
+          </div>
+          <!--<div class="carousel-item">-->
+            <!--<img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">-->
+            <!--<div class="container">-->
+              <!--<div class="carousel-caption">-->
+                <!--<h1>Another example headline.</h1>-->
+                <!--<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>-->
+                <!--<p><a class="btn btn-lg btn-primary" href="https://v4.bootcss.com/docs/4.0/examples/carousel/#" role="button">Learn more</a></p>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="carousel-item">-->
+            <!--<img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">-->
+            <!--<div class="container">-->
+              <!--<div class="carousel-caption text-right">-->
+                <!--<h1>One more for good measure.</h1>-->
+                <!--<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>-->
+                <!--<p><a class="btn btn-lg btn-primary" href="https://v4.bootcss.com/docs/4.0/examples/carousel/#" role="button">Browse gallery</a></p>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        </div>
+
+      </div>
+
+
+
+
+
+      <!--<section class="jumbotron text-left">-->
+        <!--<div class="container">-->
+          <!--<h1 class="jumbotron">新闻正文</h1>-->
+           <!--<p></p>-->
+           <!--<p></p>-->
+           <!--<p></p> <p></p> <p></p>-->
+           <!--<p></p> <p></p> <p></p>-->
+
+
+<!--<textarea style="overflow:scroll;" cols="25" rows="30">-->
+			<!--</textarea>-->
+          <!--<p class="lead text-left"  >Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>-->
+          <!--<p>-->
+
+
+            <!--<a href="https://v4.bootcss.com/docs/4.0/examples/album/#" class="btn btn-primary my-2">Main call to action</a>-->
+            <!--<a href="https://v4.bootcss.com/docs/4.0/examples/album/#" class="btn btn-secondary my-2">Secondary action</a>-->
+          <!--</p>-->
+        <!--</div>-->
+      <!--</section>-->
+
+      <div class="album py-8 bg-light">
+        <div class="container">
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <!--<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16b09e2eb45%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16b09e2eb45%22%3E%3Crect%20width%3D%22348%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.71875%22%20y%3D%22120.15%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">-->
+
+                <h3 class="text-center">评论分析得分</h3>
+                    <img id="checkImg" src="" style="width:100%; height:auto;">
+                <div class="card-body">
+                  <!--<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
+                  <!--<div class="d-flex justify-content-between align-items-center">-->
+                    <!--<div class="btn-group">-->
+                      <!--<button type="button" class="btn btn-sm btn-outline-secondary">View</button>-->
+                      <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
+                    <!--</div>-->
+                    <!--<small class="text-muted">9 mins</small>-->
+                  <!--</div>-->
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="card mb-4 box-shadow">
+                <!--<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16b09e2eb40%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16b09e2eb40%22%3E%3Crect%20width%3D%22348%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.71875%22%20y%3D%22120.15%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">-->
+                <h3 class="text-center">热点关键词</h3>
+                        <div id="wordsCloud" style="height: 250px;width: 430px;"></div>
+                <div class="card-body">
+                  <!--<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
+                  <!--<div class="d-flex justify-content-between align-items-center">-->
+                    <!--<div class="btn-group">-->
+                      <!--<button type="button" class="btn btn-sm btn-outline-secondary">View</button>-->
+                      <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
+                    <!--</div>-->
+                    <!--<small class="text-muted">9 mins</small>-->
+                  <!--</div>-->
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card mb-3 box-shadow">
+                <!--<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16b09e2eb43%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16b09e2eb43%22%3E%3Crect%20width%3D%22348%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.71875%22%20y%3D%22120.15%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">-->
+                <h3 class="text-center">新词发现</h3>
+                    <!--<p id="hot_words"></p>-->
+                    <table class="table table-hover" id="table_hot_words">
+
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                <div class="card-body">
+                  <!--<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
+                  <!--<div class="d-flex justify-content-between align-items-center">-->
+                    <!--<div class="btn-group">-->
+                      <!--<button type="button" class="btn btn-sm btn-outline-secondary">View</button>-->
+                      <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
+                    <!--</div>-->
+                    <!--<small class="text-muted">9 mins</small>-->
+                  <!--</div>-->
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <h3 class="text-center">核心评论</h3>
+                    <p id="summary"></p>
+                    <table class="table table-hover" id="table_summary">
+                        <!--<tr>-->
+                            <!--<th>标题</th>-->
+                        <!--</tr>-->
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </table>
+                <!--<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16b09e2eb41%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16b09e2eb41%22%3E%3Crect%20width%3D%22348%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.71875%22%20y%3D%22120.15%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">-->
+                <div class="card-body">
+                  <!--<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
+                  <!--<div class="d-flex justify-content-between align-items-center">-->
+                    <!--<div class="btn-group">-->
+                      <!--<button type="button" class="btn btn-sm btn-outline-secondary">View</button>-->
+                      <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
+                    <!--</div>-->
+                    <!--<small class="text-muted">9 mins</small>-->
+                  <!--</div>-->
+                </div>
+
+
+              </div>
+            </div>
+
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <h3 class="text-center">情感倾向统计</h3>
+                <!--<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16b09e2eb44%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16b09e2eb44%22%3E%3Crect%20width%3D%22348%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.71875%22%20y%3D%22120.15%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">-->
+                <div id="bingzhuangtu2" style="height:300px"></div>
+                <div class="card-body">
+                  <!--<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
+                  <!--<div class="d-flex justify-content-between align-items-center">-->
+                    <!--<div class="btn-group">-->
+                      <!--<button type="button" class="btn btn-sm btn-outline-secondary">View</button>-->
+                      <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
+                    <!--</div>-->
+                    <!--<small class="text-muted">9 mins</small>-->
+                  <!--</div>-->
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <h3 class="text-center">新闻分类统计</h3>
+                <!--<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16b09e2eb46%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16b09e2eb46%22%3E%3Crect%20width%3D%22348%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.71875%22%20y%3D%22120.15%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">-->
+				<div id="bingzhuangtu" style="height:300px"></div>
+
+                <div class="card-body">
+                  <!--<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
+                  <!--<div class="d-flex justify-content-between align-items-center">-->
+                    <!--<div class="btn-group">-->
+                      <!--<button type="button" class="btn btn-sm btn-outline-secondary">View</button>-->
+                      <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
+                    <!--</div>-->
+                    <!--<small class="text-muted">9 mins</small>-->
+                  <!--</div>-->
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="text-muted">
+      <div class="container">
+        <!--<p class="float-right">-->
+          <!--<a href="https://v4.bootcss.com/docs/4.0/examples/album/#">Back to top</a>-->
+        <!--</p>-->
+        <p>©2019 News emotion analysis. All rights reserved.</p>
+        <!--<p>New to Bootstrap? <a href="https://v4.bootcss.com/docs/4.0/">Visit the homepage</a> or read our <a href="https://v4.bootcss.com/docs/4.0/getting-started/">getting started guide</a>.</p>-->
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./demo2_files/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="static/js/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/holder.min.js"></script>
+  
+
+<svg xmlns="http://www.w3.org/2000/svg" width="348" height="225" viewBox="0 0 348 225" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="17" style="font-weight:bold;font-size:17pt;font-family:Arial, Helvetica, Open Sans, sans-serif">Thumbnail</text></svg></body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="static/js/tu.js"></script>
+<script></script>
+<script>
+
+    function push_all_text(all_text) {
+        document.getElementById("all_text").innerText = all_text
+    }
+    //热(名)词
+    function push_hot_words(hot_words) {
+        // document.getElementById("hot_words").innerText = hot_words
+      for(x in hot_words)
+        {
+        var newRow = "<tr><td>"+hot_words[x]+"</td></tr>";
+        $("#table_hot_words tr:last").after(newRow);
+        }
+
+        var newRow = "<tr><td><p><p><p></p></td></tr>";
+
+        $("#table_hot_words tr:last").after(newRow);
+        // $("#summary").text(summary);
+
+    }
+
+    function push_summary(summary) {
+        for(x in summary)
+        {
+        var newRow = "<tr><td>"+summary[x]+"</td></tr>";
+        $("#table_summary tr:last").after(newRow);
+        }
+
+        var newRow = "<tr><td><p><p><p></p></td></tr>";
+
+        $("#table_summary tr:last").after(newRow);
+        // $("#summary").text(summary);
+
+    }
+
+    function push_word(result) {
+        var myChart = echarts.init(document.getElementById("wordsCloud"));
+        var option = {
+            title: {
+                text: '',
+                link: 'https://www.baidu.com/s?wd=' + encodeURIComponent('ECharts'),
+                x: 'center',
+                textStyle: {
+                    fontSize: 27
+                }
+            },
+            tooltip: {
+                show: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {
+                        iconStyle: {
+                            normal: {
+                                color: '#FFFFFF'
+                            }
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: '热点分析',
+                type: 'wordCloud',
+                //size: ['9%', '99%'],
+                sizeRange: [6, 66],
+                //textRotation: [0, 45, 90, -45],
+                rotationRange: [-30, 30],
+                shape: 'circle',
+                textPadding: 1,
+                autoSize: {
+                    enable: true,
+                    minSize: 6
+                },
+                textStyle: {
+                    normal: {
+                        color: function () {
+                            return 'rgb(' + [
+                                Math.round(Math.random() * 160),
+                                Math.round(Math.random() * 160),
+                                Math.round(Math.random() * 160)
+                            ].join(',') + ')';
+                        }
+                    },
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowColor: '#333'
+                    }
+                },
+                data: [{
+                    name: "Jayfee",
+                    value: 666
+                }, {
+                    name: "Nancy",
+                    value: 520
+                }]
+            }]
+        };
+// 数据赋值
+        var JosnList = result;
+
+        option.series[0].data = JosnList;
+
+        myChart.setOption(option);
+        myChart.on('click', function (params) {
+            //alert((params.name));
+            // window.open('https://www.baidu.com/s?wd=' + encodeURIComponent());                           .name));
+            window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params['name']));
+        });
+    }
+
+
+    function add_summary() {
+    }
+
+</script>
+
+<script type="text/javascript">
+    function keywords(name) {
+        var $name;
+        if (name == '') {
+            $name = '{{name}}';
+        } else {
+            $name = name;
+        }
+        test_name = $name;
+        jQuery.ajax({
+            url: '/keywords',
+            type: 'post',
+            async: true,
+            data: {name: $name},
+            dataType: 'json',
+            success: function (result) {
+                var info_news = result;
+                push_word(info_news);
+            },
+            error: function (result) {
+                console.log('异常');
+            }
+        })
+    }
+</script>
+<script type="text/javascript">
+    function alltext(name) {
+        var $name;
+        if (name == '') {
+            $name = '{{name}}';
+        } else {
+            $name = name;
+        }
+        jQuery.ajax({
+            url: '/alltext',
+            type: 'post',
+            async: true,
+            data: {name: $name},
+            dataType: 'json',
+            success: function (result) {
+
+
+                var all_text = result;
+                push_all_text(all_text);
+
+            },
+            error: function (result) {
+                console.log('异常');
+            }
+        })
+    }
+</script>
+<script type="text/javascript">
+    function hotwords(name) {
+        var $name;
+        if (name == '') {
+            $name = '{{name}}';
+        } else {
+            $name = name;
+        }
+        jQuery.ajax({
+            url: '/hotwords',
+            type: 'post',
+            async: true,
+            data: {name: $name},
+            dataType: 'json',
+            success: function (result) {
+                var hot_words = result;
+
+                push_hot_words(hot_words);
+            },
+            error: function (result) {
+                console.log('异常');
+            }
+        })
+    }
+</script>
+
+<script type="text/javascript">
+    function emotion(name) {
+        var $name;
+        if (name == '') {
+            $name = '{{name}}';
+        } else {
+            $name = name;
+        }
+        jQuery.ajax({
+            url: '/emotion',
+            type: 'post',
+            async: true,
+            data: {name: $name},
+            dataType: 'json',
+            success: function (result) {
+                var a = result;
+                // push_all_text(all_text);
+                // alert(img);
+              // alert(a)
+                $("#checkImg").attr("src", "data:image/png;base64," + result['img']);
+                push_score_count(result['result'])
+            },
+            error: function (result) {
+                console.log('异常');
+            }
+        })
+    }
+</script>
+
+<script type="text/javascript">
+    function summary(name) {
+        var $name;
+        if (name == '') {
+
+            $name = '{{name}}';
+            // alert($name);
+        } else {
+            $name = name;
+        }
+        jQuery.ajax({
+            url: '/summary',
+            type: 'post',
+            async: true,
+            data: {name: $name},
+            dataType: 'json',
+            success: function (result) {
+                // var summary = result;
+                // // push_all_text(all_text);
+                push_summary(result)
+            },
+            error: function (result) {
+                console.log('异常');
+            }
+        })
+    }
+</script>
+
+<script>
+    keywords('');
+    alltext('');
+    summary('');
+    emotion('');
+    hotwords('');
+
+</script>
+
+
+
+
+
+<script type="text/javascript">
+
+  function push_score_count(result) {
+var dom = document.getElementById("bingzhuangtu2");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+app.title = '环形图';
+
+option = {
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        x: 'left',
+        data:result['category']
+    },
+    series: [
+        {
+            name:'访问来源',
+            type:'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            label: {
+                normal: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+			data:result['data']
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}}
+
+
+
+
+function push_category_count(result) {
+var dom = document.getElementById("bingzhuangtu");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+app.title = '环形图';
+
+option = {
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        x: 'left',
+        data:result['category']
+    },
+    series: [
+        {
+            name:'访问来源',
+            type:'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            label: {
+                normal: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+			data:result['data']
+            // data:[
+            //     {value:335, name:'体育'},
+            //     {value:310, name:'邮件营销'},
+            //     {value:234, name:'联盟广告'},
+            //     {value:135, name:'视频广告'},
+            //     {value:1548, name:'搜索引擎'}
+            // ]
+        }
+    ]
+};
+
+
+
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}}
+</script>
+
+
+
+<script type="text/javascript">
+    function get_category() {
+      // alert('sds');
+        jQuery.ajax({
+            url: '/categorycount',
+            type: 'get',
+            async: true,
+            dataType: 'json',
+            success: function (result) {
+                var info_news = result;
+                // alert(info_news['category'])
+                push_category_count(info_news);
+            },
+            error: function (result) {
+                console.log('异常');
+            }
+        })
+    }
+</script>
+
+<script>
+    function getinfomation() {
+        var $name;
+        $name = document.getElementById("search").value;
+
+        keywords($name);
+        alltext($name);
+        summary($name);
+        emotion($name);
+        hotwords($name);
+
+    }
+    get_category();
+</script>
+
+</html>

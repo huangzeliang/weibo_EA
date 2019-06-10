@@ -44,8 +44,13 @@ def get_hot_words(text=''):
     # print("\n----\n", result)
     # print("\n----\n", '增加了 %d 个新词, 词语和得分分别为: \n' % len(add_word))
     # print('#############################')
+    newdata={}
     for word, score in add_word.items():
+
         print(word + ' ---->  ', score)
+        if score>0.08:
+            newdata[word]=score
+
     # print('#############################')
 
     # 前后效果对比
@@ -59,7 +64,9 @@ def get_hot_words(text=''):
         jieba.add_word(word)
     # print("添加后：")
     # print("".join([(x + '/ ') for x in jieba.cut(test_sentence, cut_all=False) if x not in stopwords]))
-    return add_word
+
+    # [x if add_word[x]>0.5 else None for x in add_word]
+    return newdata
 
 
 

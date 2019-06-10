@@ -20,6 +20,7 @@ def  emotionParser_from_str(strs):
         except ZeroDivisionError as e:
             print (e)
 
+    # print (sentimentslist)
 
     plt.hist(sentimentslist, bins=np.arange(0, 1, 0.01), facecolor="#4F8CD6")
 
@@ -32,7 +33,7 @@ def  emotionParser_from_str(strs):
         base64_data = base64.b64encode(f.read())
         s = base64_data.decode()
     f.close()
-    return s
+    return s,sentimentslist
 
 
 #从数据库中读取

@@ -85,18 +85,20 @@
         // artBody.parentNode.outerHTML = artBody.parentNode.outerHTML.replace(artBody.innerHTML, "");
         for (i in news_list) {
             var x = document.getElementById('table').insertRow(1)
+                        var str = news_list[i]['title']+"<a href='http://127.0.0.1:5000/testget?name=" + news_list[i]['title'] + "'>查看详情</a>"
+
             x.insertCell(0).innerHTML = news_list[i]['title']
             x.insertCell(1).innerHTML = news_list[i]['article']
             comments_text=''
-            for (i in news_list[i]['comments']){
-                comments_text=comments_text+'<p>'+news_list[i]['comments'][i]
+            for (index in news_list[i]['comments']){
+                comments_text=comments_text+'<p>'+news_list[i]['comments'][index]
             }
 
             // x.insertCell(2).innerHTML = news_list[i]['comments']
             x.insertCell(2).innerHTML=comments_text
             x.insertCell(3).innerHTML = news_list[i]['counts']
             x.insertCell(4).innerHTML = news_list[i]['category']
-            var str = "<a href='http://127.0.0.1:5000/testget?name=" + news_list[i]['title'] + "'>查看详情</a>"
+            var str ="<a href='http://127.0.0.1:5000/testget?name=" + news_list[i]['title'] + "'>查看详情</a>"
             x.insertCell(5).innerHTML = str
         }
 

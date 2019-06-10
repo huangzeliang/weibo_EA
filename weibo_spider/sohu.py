@@ -10,10 +10,10 @@ from db import *
 
 # print (chardet.detect(b'&#24052;&#40654;&#22307;&#27597;&#38498;&#22823;&#28779;&#261'.decode('utf-8')))
 
-update=True
-crawl=False
-# update=False
-# crawl=True
+# update=True
+# crawl=False
+update=False
+crawl=True
 if(crawl):
     url="https://weibo.com/?category=7"
     urlsinanews='https://www.weibo.com/login.php?url=http%253A%252F%252Fvip.weibo.com%252F'
